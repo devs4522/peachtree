@@ -1,0 +1,63 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Kanit&display=swap');
+.content{
+    font-family: 'Kanit', sans-serif;
+    .card-header{
+        background-color: #17a2b8;
+        color: #fff;
+    }
+   
+    .underline-form { 
+        .btn-primary, .btn-primary:hover{
+            background-color: #ed6328;
+            border-color: #ed6328;
+        }
+        .btn{
+            padding-left: 2.75rem;
+            padding-right: 2.75rem;
+        }
+        label{
+            margin-bottom: 0;
+        }
+    
+        .input-lg {
+            border-radius: 0;
+            padding: 0;
+        }
+        .input-underline {
+            background: 0 0;
+            border: none;
+            box-shadow: none;
+            border-bottom: 2px solid rgba(168, 164, 164, 0.5);
+            border-radius: 0;
+        }
+        .input-underline:focus {
+            border-bottom: 2px solid #444;
+            box-shadow: none;
+        }
+        .input-underline.ng-touched.ng-invalid{
+            border-bottom: 2px solid rgba(255, 0, 0, 1);
+        }    
+    }
+}
+
+@media (min-width: 1400px){
+    .container {
+        max-width: 1340px;
+    }
+}
+
+@media (min-width: 1600px){
+    .container {
+        max-width: 1540px;
+    }
+}
+
+@media (min-width: 1800px){
+    .container {
+        max-width: 1640px;
+    }
+}
+
+
+

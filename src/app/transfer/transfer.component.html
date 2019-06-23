@@ -1,0 +1,35 @@
+<div class="card mb-3">
+  <div class="card-header text-center"><span class="float-left"><i class="fa fa-refresh"></i></span> Make a Transfer</div>
+  <div class="card-body underline-form">
+    <form role="form" [formGroup]="transferForm" (ngSubmit)="onSubmit()" *ngIf="!isPreview">    
+      <div class="form-group">
+          <label for="fromAcount" class="font-weight-bold">From Account</label>
+          <input type="text" class="form-control input-underline input-lg" id="fromAcount" placeholder="From Account" formControlName="fromAccount">
+      </div>
+
+      <div class="form-group">
+          <label for="toAcount" class="font-weight-bold">To Account</label>
+          <input type="text" class="form-control input-underline input-lg" id="toAcount" placeholder="To Account" formControlName="toAccount">
+      </div>
+
+      <div class="form-group">
+        <label for="amount" class="font-weight-bold">Amount</label>
+        <input type="number" class="form-control input-underline input-lg" id="amount" placeholder="$ 0.00" formControlName="amount" (input)="onAmountChange()">
+        <span  *ngIf="isExceedsMinimumBalance" class="text-danger font-weight-bold">Balance should not go below minimum balance ($500)</span>
+      </div>
+      <button class="btn btn-primary float-right" type="submit" (ngSubmit)="onSubmit" [disabled]="!transferForm.valid">Submit</button>
+    </form>
+    <div class="preview" style="clear:both" *ngIf="isPreview">
+      <p><span class="font-weight-bold"> From Account</span><br/>
+        {{fromAccount}}
+      </p>
+      <p><span class="font-weight-bold"> To Account</span><br/>
+        {{transferForm.value.toAccount}}
+      </p>
+      <p><span class="font-weight-bold"> Amount</span><br/>
+        $ {{transferForm.value.amount}}
+      </p>
+      <button class="btn btn-primary float-right" type="button" (click)="onTransfer()">Transfer</button>
+    </div>
+  </div>
+</div>

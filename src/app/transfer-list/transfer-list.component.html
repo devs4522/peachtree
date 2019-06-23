@@ -1,0 +1,50 @@
+<div class="card mb-3">
+  <div class="card-header text-center"><span class="float-left"><i class="fa fa-briefcase"></i></span> Recent Transactions</div>
+  <div class="card-body transaction-list">
+    <div class="row">
+      <div class="col-sm-6">
+        <form role="form" class="underline-form" [formGroup]="transctionFilter">
+          <div class="form-group">
+              <input type="text" class="form-control input-underline input-lg" id="fromAcount"  formControlName="searchText"  name="searchText" placeholder="Search By Typing..">
+              <span class="form-control-clear  fa fa-times hidden" *ngIf="transctionFilter.value.searchText" (click)="transctionFilter.reset()"></span>
+            </div>
+        </form>
+      </div>
+      <div class="col-sm-6">
+        <div class="float-right">
+          <span><small class="font-weight-bold">Sort By</small></span>
+          <div class="btn-group btn-sorting " role="group" aria-label="Sorting">
+            <button type="button" class="btn btn-white text-uppercase" (click)="onSort('transactionDate')">Date <i class="fa" 
+              [ngClass]="{'fa-sort': column != 'transactionDate', 
+                                  'fa-sort-asc': (column == 'transactionDate' && !isDesc), 
+                                  'fa-sort-desc': (column == 'transactionDate' && isDesc) }"
+              aria-hidden="true"> </i> 
+            </button>
+            <button type="button" class="btn btn-white text-uppercase" (click)="onSort('merchant')">Beneficiary <i class="fa" 
+              [ngClass]="{'fa-sort': column != 'merchant', 
+                                  'fa-sort-asc': (column == 'merchant' && !isDesc), 
+                                  'fa-sort-desc': (column == 'merchant' && isDesc) }"
+              aria-hidden="true"> </i>
+            </button>
+            <button type="button" class="btn btn-white text-uppercase" (click)="onSort('amount')">Amount <i class="fa" 
+              [ngClass]="{'fa-sort': column != 'amount', 
+                                  'fa-sort-asc': (column == 'amount' && !isDesc), 
+                                  'fa-sort-desc': (column == 'amount' && isDesc) }"
+              aria-hidden="true"> </i> </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <table class="table">
+      <tbody>
+        <tr *ngFor="let transction of transctions | merchant: transctionFilter.value.searchText | orderBy: {property: column, direction: direction}" [ngStyle]="{'border-left-color': transction.categoryCode }">
+          <td>{{transction.transactionDate | date}}</td>
+          <td><img class="img-fluid" src={{transction.merchantLogo}} alt="merchant logo"></td>
+          <td colspan="2"><span class="font-weight-bold">{{transction.merchant}}</span><br/><span>{{transction.transactionType}}</span></td>
+          <td class="text-right font-weight-bold">-$ {{transction.amount}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+  

@@ -1,0 +1,49 @@
+.card-body.transaction-list{
+    min-height: 700px;
+    
+    .table td{
+        border-top: 2px solid #dee2e6;
+        padding: 0.25rem 0.75rem;
+        vertical-align: middle;
+        img{
+            width: 40px;
+        }
+    }
+    tbody{
+        border-left: 2px solid #dee2e6;
+        border-right: 2px solid #dee2e6;
+        border-bottom: 2px solid #dee2e6;
+
+        tr{
+            border-left-style: solid;
+            border-left-width: 7px;
+        }
+    }
+
+    .btn-sorting{
+        border-radius: 0;
+        margin-left: 5px;
+        :hover, :focus, :active{
+            border-radius: 0;
+        }
+
+        .btn-white{
+            border: 1px solid #ddd !important;
+            :hover, :focus, :active{
+                background-color: #17a2b8;
+                color: #fff;
+            }
+        }
+    }
+
+    .form-control-clear {
+        z-index: 10;
+        pointer-events: auto;
+        cursor: pointer;
+        float: right;
+        position: relative;
+        top: -26px;
+      }
+
+    
+}
