@@ -43,18 +43,16 @@ export class TransferComponent implements OnInit {
 
   onSubmit(){
     let amount= this.transferForm.value.amount;
-    console.log("In beginning",this.balanceAmount);
     if(this.balanceAmount - amount < this.minimumBalance){
       this.transferForm.controls['amount'].setErrors({'incorrect': true});
       this.isExceedsMinimumBalance= true;
     }else{
       this.isExceedsMinimumBalance= false;
     }
-    console.log("In beginning",this.balanceAmount);
-
+    
     if(this.transferForm.valid){
       this.isPreview= true;
-      this.balanceAmount= this.balanceAmount - amount;
+      
     }
   }
 
@@ -69,13 +67,19 @@ export class TransferComponent implements OnInit {
     )
 
     this.tsService.addTransction(newTransction);
-    let fromAccount= 'Free Checking (4692) - ' + this.balanceAmount;
+    //let fromAccount= 'Free Checking (4692) - ' + this.balanceAmount;
+    this.balanceAmount= this.balanceAmount - this.transferForm.value.amount;
     this.initFrom();
     this.isPreview= false;
   }
 
   onAmountChange (){
     this.isExceedsMinimumBalance= false;
+  }
+
+  onRefresh(){
+    this.initFrom();
+    this.isPreview= false;
   }
 
 }

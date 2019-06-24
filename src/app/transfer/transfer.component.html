@@ -1,5 +1,5 @@
 <div class="card mb-3">
-  <div class="card-header text-center"><span class="float-left"><i class="fa fa-refresh"></i></span> Make a Transfer</div>
+  <div class="card-header text-center"><span class="float-left pointer" (click)= "onRefresh()"><i class="fa fa-refresh" ></i></span> Make a Transfer</div>
   <div class="card-body underline-form">
     <form role="form" [formGroup]="transferForm" (ngSubmit)="onSubmit()" *ngIf="!isPreview">    
       <div class="form-group">

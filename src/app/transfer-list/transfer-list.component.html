@@ -41,7 +41,7 @@
           <td>{{transction.transactionDate | date}}</td>
           <td><img class="img-fluid" src={{transction.merchantLogo}} alt="merchant logo"></td>
           <td colspan="2"><span class="font-weight-bold">{{transction.merchant}}</span><br/><span>{{transction.transactionType}}</span></td>
-          <td class="text-right font-weight-bold">-$ {{transction.amount}}</td>
+          <td class="text-right font-weight-bold">- {{transction.amount | currency}}</td>
         </tr>
       </tbody>
     </table>
